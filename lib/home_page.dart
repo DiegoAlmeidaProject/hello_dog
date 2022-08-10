@@ -13,21 +13,27 @@ class HomePage extends StatelessWidget {
   }
 
   _body() {
-    return Container(
-      color: Colors.white,
-      child: Column (
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget> [
-          _text(),
-          _pageView(),
-          _buttons()
-        ],
+    return SingleChildScrollView(
+      child: Container(
+        color: Colors.yellow,
+        child: Column (
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget> [
+            _text(),
+            _pageView(),
+            _buttons(),
+            _text(),
+            _pageView(),
+            _buttons(),
+          ],
+        ),
       ),
     );
   }
 
   _pageView() {
     return Container(
+      margin: EdgeInsets.only(bottom: 20),
           height: 300,
           child: PageView(
             children: <Widget> [
