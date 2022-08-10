@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_dog/main.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -14,20 +15,49 @@ class HomePage extends StatelessWidget {
   _body() {
     return Container(
       color: Colors.white,
-      child: Center(
-        child: _button(),
+      child: Column (
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget> [
+          _text(),
+          _img(),
+          _buttons()
+        ],
       ),
     );
   }
 
-  _button() {
+  _buttons() {
+    return Column(
+          children: <Widget> [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget> [
+                _button("ListView"),
+                _button("Page 2"),
+                _button("Page 3"),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget> [
+                _button("Snack"),
+                _button("Dialog"),
+                _button("Toast"),
+              ],
+            )
+          ],
+        );
+  }
+
+  /** Metodo que recebe o nome do botão **/
+  _button(String text) {
     return RaisedButton(
         color: Colors.blue,
         child: Text(
-          "OK",
+          text,
           style: TextStyle(
             color: Colors.white,
-            fontSize: 30,
+            fontSize: 20,
           ),
         ),
         onPressed: _onClickOk
@@ -40,7 +70,7 @@ class HomePage extends StatelessWidget {
 
   _img() {
     return Image.asset(
-      "assets/images/dog4.png",
+      "assets/images/dog1.png",
       fit: BoxFit.cover,
     );
   }
