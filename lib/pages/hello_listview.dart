@@ -49,6 +49,7 @@ class _HelloListViewState extends State<HelloListView> {
       Dog("Pug", "assets/images/dog3.png"),
       Dog("RottWeiler", "assets/images/dog4.png"),
       Dog("Pastor", "assets/images/dog5.png"),
+      Dog("KABRITA", "assets/images/dog6.png"),
     ];
 
     if(_gridView){

@@ -5,6 +5,7 @@ import 'package:hello_dog/pages/hello_page2.dart';
 import 'package:hello_dog/pages/hello_page3.dart';
 import 'package:hello_dog/utils/nav.dart';
 import 'package:hello_dog/widgets/blue_button.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -42,6 +43,7 @@ class HomePage extends StatelessWidget {
           _img("assets/images/dog3.png"),
           _img("assets/images/dog4.png"),
           _img("assets/images/dog5.png"),
+          _img("assets/images/dog6.png"),
         ],
       ),
     );
@@ -68,7 +70,7 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 BlueButton("Snack", onPressed: () => _onClickSnack(context)),
-                BlueButton("Dialog", onPressed: _onClickDialog),
+                BlueButton("Dialog", onPressed: () => _onClickDialog(context)),
                 BlueButton("Toast", onPressed: _onClickToast),
               ],
             )
@@ -96,9 +98,47 @@ class HomePage extends StatelessWidget {
     ));
   }
 
-  _onClickDialog() {}
+  _onClickDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+      return WillPopScope(
+        onWillPop: () async => false,/**Atributo evita que seja fechado o modal pelo Botão do celualar**/
+        child: AlertDialog(
+          title: Text("Flutter é muito legal !"),
+          actions: <Widget> [
+            FlatButton(
+                child: Text("Cancelar"),
+                onPressed: () {
+                  Navigator.pop(context);
+            },
+            ),
+            FlatButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.pop(context);
+                print("OK !!");
 
-  _onClickToast() {}
+              },
+            )
+          ],
+        ),
+      );
+    });
+  }
+
+  _onClickToast() {
+    Fluttertoast.showToast(
+        msg: "Flutter é muito legal !",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
+  }
 
   _img(String img) {
     return Container(
