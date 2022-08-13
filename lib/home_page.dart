@@ -133,6 +133,7 @@ class HomePage extends StatelessWidget {
         msg: "Flutter é muito legal !",
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.CENTER,
+        //timeInSecForIos: 1,
         timeInSecForIosWeb: 1,
         backgroundColor: Colors.green,
         textColor: Colors.white,
