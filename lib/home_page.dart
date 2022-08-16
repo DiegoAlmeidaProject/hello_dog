@@ -15,14 +15,39 @@ class HomePage extends StatelessWidget {
         title: Text("Hello Flutter"),
       ),
       body: _body(context),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          FloatingActionButton(
+            child: Icon(Icons.add),
+            onPressed: () {
+            _onClickFab();
+            },
+          ),
+          SizedBox(
+            width: 8,
+          ),
+          FloatingActionButton(
+            child: Icon(Icons.favorite),
+              onPressed: () {
+              _onClickFab();
+          })
+
+        ],
+      ),
     );
   }
 
+  void _onClickFab() {
+    print("Adicionar");
+  }
+  
   _body(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(top: 16),
       color: Colors.white,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           _text(),
           _pageView(),
@@ -35,7 +60,7 @@ class HomePage extends StatelessWidget {
   _pageView() {
     return Container(
       margin: EdgeInsets.only(bottom: 20),
-      height: 300,
+      height: 250,
       child: PageView(
         children: <Widget>[
           _img("assets/images/dog1.png"),
@@ -164,3 +189,6 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+
+
