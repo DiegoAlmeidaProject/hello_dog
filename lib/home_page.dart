@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_dog/drawer_list.dart';
 import 'package:hello_dog/pages/hello_listview.dart';
 import 'package:hello_dog/pages/hello_page1.dart';
 import 'package:hello_dog/pages/hello_page2.dart';
@@ -15,33 +16,20 @@ class HomePage extends StatelessWidget {
         title: Text("Hello Flutter"),
       ),
       body: _body(context),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          FloatingActionButton(
+        floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add),
             onPressed: () {
-            _onClickFab();
+              _onClickFab();
             },
           ),
-          SizedBox(
-            width: 8,
-          ),
-          FloatingActionButton(
-            child: Icon(Icons.favorite),
-              onPressed: () {
-              _onClickFab();
-          })
-
-        ],
-      ),
+      drawer: DrawerList(),
     );
   }
 
   void _onClickFab() {
     print("Adicionar");
   }
-  
+
   _body(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: 16),
@@ -128,29 +116,29 @@ class HomePage extends StatelessWidget {
         context: context,
         barrierDismissible: false,
         builder: (context) {
-      return WillPopScope(
-        onWillPop: () async => false,/**Atributo evita que seja fechado o modal pelo Botão do celualar**/
-        child: AlertDialog(
-          title: Text("Flutter é muito legal !"),
-          actions: <Widget> [
-            FlatButton(
-                child: Text("Cancelar"),
-                onPressed: () {
-                  Navigator.pop(context);
-            },
+          return WillPopScope(
+            onWillPop: () async => false,
+            /**Atributo evita que seja fechado o modal pelo Botão do celualar**/
+            child: AlertDialog(
+              title: Text("Flutter é muito legal !"),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text("Cancelar"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                FlatButton(
+                  child: Text("OK"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                    print("OK !!");
+                  },
+                )
+              ],
             ),
-            FlatButton(
-              child: Text("OK"),
-              onPressed: () {
-                Navigator.pop(context);
-                print("OK !!");
-
-              },
-            )
-          ],
-        ),
-      );
-    });
+          );
+        });
   }
 
   _onClickToast() {
@@ -162,8 +150,7 @@ class HomePage extends StatelessWidget {
         timeInSecForIosWeb: 1,
         backgroundColor: Colors.green,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
   }
 
   _img(String img) {
@@ -189,6 +176,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-
-
