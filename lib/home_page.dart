@@ -11,18 +11,34 @@ import 'package:fluttertoast/fluttertoast.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Hello Flutter"),
-      ),
-      body: _body(context),
-        floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.add),
-            onPressed: () {
-              _onClickFab();
-            },
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(        
+          title: Text("Hello Flutter"),
+          bottom: TabBar(tabs: [
+            Tab(text: "TAB 1",),
+            Tab(text: "TAB 2",),
+            Tab(text: "TAB 3",),
+          ],),
+        ),
+        body: TabBarView(children: [
+          _body(context),
+          Container(
+            color: Colors.green,
           ),
-      drawer: DrawerList(),
+          Container(
+            color: Colors.yellow,
+          ),
+        ]),
+          floatingActionButton: FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: () {
+                _onClickFab();
+              },
+            ),
+        drawer: DrawerList(),
+      ),
     );
   }
 

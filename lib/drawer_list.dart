@@ -28,7 +28,7 @@ class DrawerList extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(Icons.help),
-              title: Text("Configurações"),
+              title: Text("Ajuda"),
               subtitle: Text("mais informações..."),
               trailing: Icon(Icons.arrow_forward),
               onTap: () {
@@ -39,7 +39,6 @@ class DrawerList extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.exit_to_app),
               title: Text("Configurações"),
-              subtitle: Text("mais informações..."),
               trailing: Icon(Icons.arrow_forward),
               onTap: () {
                 print("Item 3");
